@@ -1,0 +1,269 @@
+@import './variable';
+@import './mixin';
+
+@media screen and (min-width: 1200px) {
+	.container {
+		padding: 0 15vw;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.container {
+		padding: 0 10vw;
+	}
+
+	.send-reviews {
+		&__picture-wrap {
+			&__img {
+				width: 15em;
+			}
+
+			&--left {
+				left: -6em;
+			}
+
+			&--right {
+				right: -6em;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.menu {
+		padding-top: 12em;
+		background-image: url(../../public/images/bg-2-md.webp);
+		height: calc(420px * 3 + 100px);
+	}
+
+	.menu__cards {
+		grid-template-columns: repeat(2, 45%);
+		justify-content: center;
+		&__card {
+			&__picture-wrap {
+				&__img {
+					height: 15vw;
+				}
+			}
+		}
+	}
+
+	.detail {
+		padding-top: 5em;
+		.detail-wrap {
+			flex-direction: column;
+
+			.detail__left {
+				margin-bottom: 3em;
+			}
+
+			.detail__right {
+				position: unset;
+				width: 100%;
+
+				&__picture-wrap {
+					width: 75%;
+					height: auto;
+				}
+
+				&__cards {
+					position: unset;
+					margin-top: 2em;
+				}
+			}
+		}
+	}
+
+	.new-menu {
+		.new-menu-wrap {
+			width: 100%;
+
+			.new-menu__card__text {
+				padding: 1.5em;
+			}
+		}
+	}
+
+	.restaurants__cards {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 15px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	:root {
+		font-size: 15px;
+	}
+
+	.jumbotron {
+		background-image: linear-gradient(hsla(0, 0%, 5%, 0.8), hsla(0, 0%, 5%, 0.8), hsla(0, 0%, 5%, 0.8)), url(../../public/images/hero-image_2-small.webp);
+	}
+	.header {
+		&__nav__hamburger {
+			@include flex(center, center, column);
+		}
+
+		&__nav__lists {
+			position: fixed;
+			flex-direction: column;
+			justify-content: start;
+			top: 0;
+			right: 0;
+			margin: 0;
+			min-width: 18em;
+			max-width: 70%;
+			height: 100vh;
+			padding: 100px 0 0 40px;
+			background-color: hsl(0, 0%, 100%);
+			transform: translateX(100%);
+			transition: 0.2s ease;
+
+			&__list {
+				margin-bottom: 1.3em;
+
+				a {
+					font-size: 1rem;
+					color: hsl(0, 0%, 10%);
+				}
+			}
+		}
+	}
+
+	.about {
+		padding: 6em 0 0;
+
+		.about-wrap {
+			@include flex(center, space-between, column);
+
+			.about__img {
+				width: 80%;
+			}
+
+			.about__text {
+				width: 100%;
+				padding-left: unset;
+				margin-top: 4em;
+			}
+		}
+	}
+
+	.menu {
+		height: calc(390px * 3 + 100px);
+	}
+
+	.menu__cards {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 15px;
+
+		&__card {
+			&__picture-wrap {
+				&__img {
+					height: 130px;
+				}
+			}
+		}
+	}
+
+	.new-menu {
+		.new-menu-wrap {
+			width: 90%;
+
+			.new-menu__card {
+				@include flex(unset, space-between, column-reverse);
+
+				.new-menu__card__text {
+					width: unset;
+				}
+
+				.new-menu__card__picture {
+					width: unset;
+				}
+			}
+		}
+	}
+
+	.coupon {
+		height: fit-content;
+		padding: 4em 0;
+
+		.coupon-wrap {
+			@include flex(center, center, column-reverse);
+
+			.coupon__picture-wrap {
+				width: 50%;
+				margin-top: 3em;
+			}
+
+			.coupon__text {
+				margin-left: unset;
+
+				.coupon__text__description {
+					max-width: unset;
+				}
+
+				.coupon__text__input-wrap {
+					width: 75%;
+				}
+			}
+		}
+	}
+
+	.send-reviews {
+		.send-reviews-wrap {
+			width: 80%;
+			.send-reviews__inputs {
+				grid-template-areas:
+					'name name'
+					'email email'
+					'review review';
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.container {
+		padding: 0 5vw !important;
+	}
+
+	.jumbotron {
+		height: 100vh;
+		.jumbotron__text {
+			width: 90%;
+		}
+	}
+
+	.new-menu {
+		.new-menu-wrap {
+			width: 100%;
+		}
+	}
+
+	.menu {
+		padding-top: 17em;
+		height: calc(430px * 4 + 100px);
+	}
+
+	.menu__cards {
+		grid-template-columns: 100%;
+		gap: 20px;
+	}
+
+	.restaurants__cards {
+		grid-template-columns: 1fr;
+		gap: 15px;
+	}
+
+	.detail {
+		&__path {
+			clip-path: polygon(73% 0, 100% 0%, 100% 100%, 10% 100%);
+			background-color: $default-yellow;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 1;
+		}
+	}
+}

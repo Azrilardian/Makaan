@@ -1,0 +1,598 @@
+@import './variable';
+@import './mixin';
+
+html {
+	scroll-behavior: smooth;
+}
+
+html body {
+	overflow-x: hidden;
+}
+
+// CSS METODOLOGY : BEM, OOCSS
+
+// utillity
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+input,
+button {
+	font-family: 'Poppins', sans-serif;
+	font-size: 0.8rem;
+}
+
+.heading__text {
+	small {
+		font-size: 1rem;
+		color: $default-darkblue;
+		font-family: 'ClearfaceGothic', serif;
+	}
+
+	h1 {
+		font-size: 3rem;
+		font-family: 'Alegreya Sans SC', sans-serif;
+	}
+}
+
+.paragraph {
+	font-size: 0.8rem;
+	letter-spacing: 1px;
+	line-height: 25px;
+	font-weight: 300;
+	font-family: 'Poppins', sans-serif;
+	color: $default-grey;
+}
+
+.button {
+	font-family: 'Poppins', sans-serif;
+	font-size: 0.8rem;
+	padding: 0 1.2em;
+	min-width: 44px;
+	min-height: 44px;
+	border-radius: 20px;
+	letter-spacing: 1px;
+	border: none;
+	cursor: pointer;
+	font-weight: 500;
+	transition: 0.2s ease;
+	box-shadow: 5px 10px 15px hsla(0, 0%, 7%, 0.2);
+
+	&--white {
+		background-color: hsl(0, 0%, 100%);
+	}
+	&--blue {
+		background-color: $default-blue;
+	}
+	&--yellow {
+		background-color: $default-yellow;
+	}
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 5px 10px 15px hsla(0, 0%, 7%, 0.3);
+	}
+}
+
+// Akhir Utillity
+
+// Skip to Content
+
+.skip-link {
+	padding: 1em;
+	background-color: $default-blue;
+	font-family: 'Poppins', sans-serif;
+	font-size: 0.8rem;
+	letter-spacing: 1px;
+	line-height: 27px;
+	font-weight: 300;
+	position: absolute;
+	top: -5em;
+	left: 0;
+	z-index: 999;
+	color: white;
+	text-decoration: none;
+
+	&:focus {
+		top: 0;
+	}
+}
+
+// Akhir Skip to Content
+
+// Header
+
+.header {
+	position: fixed;
+	z-index: 99;
+	width: 100%;
+	background-color: hsla(0, 0%, 9%, 0.7);
+	transition: 0.2s ease;
+	box-shadow: unset;
+
+	&__nav {
+		@include flex(center, space-between);
+		padding: 1.7em 0;
+		transition: 0.2s ease;
+
+		&__logo {
+			font-weight: 600;
+			font-size: 1.5rem;
+			a {
+				padding: 0.4em 0;
+				span {
+					color: $default-yellow;
+				}
+			}
+		}
+
+		&__hamburger {
+			display: none;
+			cursor: pointer;
+			transition: 0.2s ease-in-out;
+			z-index: 999;
+			height: 4em;
+			width: 4em;
+			border: none;
+			background-color: transparent;
+
+			&__line {
+				margin: auto;
+				display: block;
+				height: 3px;
+				width: 70%;
+				border-radius: 10px;
+				background-color: $default-yellow;
+				transition: 0.3s;
+				margin: 0.15em 0;
+
+				&--rotate-bottom,
+				&--rotate-top {
+					transform-origin: left;
+				}
+			}
+		}
+
+		&__lists {
+			@include flex(start, space-between);
+			width: 22em;
+			list-style-type: none;
+			font-family: 'Poppins', sans-serif;
+
+			&__list {
+				a {
+					font-size: 0.8rem;
+					transition: transform 0.2s ease;
+					padding: 1em;
+					&:hover {
+						color: $default-yellow;
+					}
+				}
+			}
+		}
+	}
+
+	&.open {
+		.header__nav__lists {
+			transform: unset;
+		}
+
+		.header__nav__hamburger__line {
+			&--rotate-top {
+				transform: rotate(40deg) translate(1.5px, -4px);
+			}
+			&--disappear {
+				opacity: 0;
+			}
+			&--rotate-bottom {
+				transform: rotate(-44deg) translate(1px, 4px);
+			}
+		}
+	}
+
+	&.darkest {
+		.header__nav {
+			padding: 1.2em 0;
+		}
+		box-shadow: 0 5px 15px hsla(0, 0%, 7%, 0.3);
+		background-color: hsla(0, 0%, 9%, 0.9);
+	}
+}
+
+// Akhir Header
+
+// jumbotron
+
+.jumbotron {
+	background-image: linear-gradient(hsla(0, 0%, 5%, 0.8), hsla(0, 0%, 5%, 0.8), hsla(0, 0%, 5%, 0.8)),
+		url(../../public/images/hero-image_2-large.webp);
+	background-size: cover;
+	width: 100%;
+	height: 30em;
+
+	.container {
+		height: 100%;
+	}
+
+	.jumbotron-wrap {
+		height: 100%;
+		padding-top: 3em;
+		@include flex(center, center, column);
+		.jumbotron__heading {
+			font-size: 3rem;
+			color: $default-yellow;
+			font-family: 'Edo', serif;
+			letter-spacing: 0.5rem;
+		}
+		.jumbotron__text {
+			margin: 2em 0;
+			max-width: 66ch;
+			text-align: center;
+			color: white;
+		}
+
+		.jumbotron__button-wrap {
+			width: 11em;
+			@include flex(center, space-between);
+		}
+	}
+}
+
+// Akhir Jumbotron
+
+// About
+
+.about {
+	position: relative;
+	padding: 6em 0 3em;
+	overflow: hidden;
+	.about-wrap {
+		@include flex(center, space-between);
+		z-index: 2;
+		.about__img {
+			width: 50%;
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+		.about__text {
+			width: 50%;
+			padding-left: 1em;
+			.heading__text--about {
+				h1 {
+					color: $default-yellow;
+				}
+			}
+		}
+	}
+
+	&__bubble-img {
+		position: absolute;
+		transform: scale(0.8);
+		user-select: none;
+
+		&--right {
+			top: -15.5em;
+			right: -19em;
+		}
+
+		&--left {
+			bottom: 0;
+			left: -15.5em;
+			z-index: -1;
+		}
+	}
+}
+
+// Akhir About
+
+// Menu
+
+.menu {
+	background-image: url(../../public/images/bg-2.webp);
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	padding-top: 12em;
+	height: calc(438px * 2 + 100px);
+	scroll-margin-top: 4.5em;
+
+	.menu-wrap {
+		@include flex(center, center, column);
+
+		.menu__text {
+			.heading__text--menu {
+				text-align: center;
+				h1 {
+					color: white;
+				}
+			}
+		}
+	}
+}
+
+// Akhir Menu
+
+.menu__cards {
+	margin-top: 2em;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	&__card {
+		background-color: white;
+		height: max-content;
+		overflow: hidden;
+		border-radius: 20px;
+		box-shadow: 7px 20px 15px hsla(0, 0%, 27%, 0.2);
+
+		&__picture-wrap {
+			&__img {
+				width: 100%;
+				height: 11vw;
+				object-fit: cover;
+			}
+		}
+		&__text {
+			margin: 1em 1.5em;
+			font-family: 'Poppins', sans-serif;
+
+			&__name {
+				font-size: 1.1rem;
+			}
+
+			&__price {
+				font-size: 0.9rem;
+				color: $default-darkblue;
+				font-weight: 500;
+			}
+
+			&__description {
+				margin-top: 0.5em;
+			}
+		}
+
+		button {
+			margin: 0 0 1.5em 1.5em;
+			color: white;
+		}
+	}
+}
+
+// New Menu
+
+.new-menu {
+	.new-menu-wrap {
+		@include flex(center, center, column);
+		width: 85%;
+		margin: 0 auto;
+		.new-menu__text {
+			.heading__text--new-menu {
+				text-align: center;
+				h1 {
+					color: $default-yellow;
+				}
+			}
+		}
+		.new-menu__card {
+			margin-top: 2em;
+			background-color: hsl(0, 0%, 96%);
+			@include flex(unset, space-between);
+
+			&__text {
+				@include flex(flex-start, center, column);
+				width: 50%;
+				padding: 3em;
+				font-family: 'Poppins', sans-serif;
+
+				&__name {
+					font-size: 2rem;
+					font-family: 'Alegreya Sans SC', sans-serif;
+					color: $default-yellow;
+				}
+				&__price {
+					font-size: 0.9rem;
+					color: $default-darkblue;
+				}
+				&__description {
+					margin: 2em 0;
+				}
+
+				button {
+					color: white;
+					margin-right: 0.4em;
+				}
+			}
+
+			&__picture {
+				width: 50%;
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+		}
+	}
+}
+
+// Akhir New Menu
+
+// Restaurants
+
+.restaurants {
+	margin: 6em 0;
+	background-color: hsla(36, 100%, 55%, 0.1);
+	padding: 5em 0;
+
+	.restaurants-wrap {
+		@include flex(center, center, column);
+		.restaurants__text {
+			text-align: center;
+			h1 {
+				color: $default-yellow;
+			}
+		}
+		button {
+			color: white;
+		}
+	}
+}
+
+.favorite-restaurants {
+	background-color: hsla(36, 100%, 55%, 0.1);
+
+	.favorite-restaurants-wrap {
+		@include flex(center, center, column);
+		.favorite-restaurants__heading {
+			background-color: $default-yellow;
+			width: 100%;
+			padding: 10em 0 5em;
+			.favorite-restaurants__text {
+				text-align: center;
+				h1 {
+					color: white;
+				}
+			}
+		}
+		.container {
+			margin: 4em 0;
+		}
+	}
+}
+
+.restaurants__cards {
+	margin: 2em 0;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	&__card {
+		border-radius: 20px;
+		position: relative;
+		overflow: hidden;
+		z-index: 2;
+		cursor: pointer;
+		height: 20em;
+		&__picture-wrap {
+			height: 100%;
+			width: 100%;
+			&__img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&__info {
+			position: absolute;
+			transform: translateY(82%);
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			padding: 1em;
+			background-color: hsla(233, 100%, 11%, 0.85);
+			border-radius: 20px;
+			transition: 0.2s ease;
+
+			p {
+				font-size: 0.8rem;
+				margin: 0 0 0.7em;
+				letter-spacing: 1px;
+				line-height: 20px;
+				font-family: 'Poppins', sans-serif;
+				color: white;
+			}
+
+			button {
+				margin-top: 1em;
+			}
+		}
+
+		&:hover,
+		&:focus {
+			.restaurants__cards__card__info {
+				transform: unset;
+			}
+		}
+	}
+}
+
+.coupon {
+	background-color: $default-darkblue;
+	margin: 8em 0;
+	height: 17em;
+	@include flex(center, center);
+	.coupon-wrap {
+		@include flex(center, center);
+		.coupon__picture-wrap {
+			width: 35%;
+			&__img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.coupon__text {
+			margin-left: 3em;
+			.heading__text--coupon {
+				small {
+					color: hsl(0, 0%, 100%);
+				}
+				h1 {
+					color: $default-yellow;
+				}
+			}
+			&__description {
+				max-width: 66ch;
+				color: hsl(0, 0%, 100%);
+			}
+			&__input-wrap {
+				@include flex(center, space-between);
+				width: 25em;
+				height: 3.5em;
+				background-color: white;
+				border-radius: 20px;
+				overflow: hidden;
+				margin-top: 1em;
+				font-size: 0.8rem;
+				&__input {
+					flex: 2;
+					padding: 0 1em;
+					height: 100%;
+					border: none;
+					letter-spacing: 1px;
+				}
+
+				button {
+					height: 100%;
+					padding: 0 1em;
+					border-top-right-radius: 20px;
+					border-bottom-right-radius: 20px;
+					flex: 1;
+					font-size: 0.8rem;
+					letter-spacing: 1px;
+					cursor: pointer;
+					transition: 0.2s ease;
+					border: none;
+					background-color: $default-blue;
+				}
+			}
+		}
+	}
+}
+
+.footer {
+	background-color: $default-blue;
+	padding: 1em;
+	&__copyright {
+		text-align: center;
+		color: white !important;
+	}
+}
