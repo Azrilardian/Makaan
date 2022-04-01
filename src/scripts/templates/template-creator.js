@@ -386,7 +386,7 @@ const nothingFavoriteFoundTemplate = () => `
     <picture class='nothing-favorite-founds__picture-wrap'>
         <img src="./images/takeout-small.webp" alt="nothing-favorite-found-image" class="nothing-favorite-founds__picture-wrap__img" loading="lazy">
     </picture>
-    <p class="nothing-favorite-founds__text">Nothing Favourite Restaurant Founds</p>
+    <p class="nothing-favorite-founds__text">Nothing Favourite Restaurant Found</p>
 `;
 
 export {
